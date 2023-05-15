@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace StonemanFinals
 {
     public struct Town
@@ -110,15 +110,19 @@ namespace StonemanFinals
             {
                 case "Outbreak":
                     ActionOutbreak(ref towns, AskTownID(towns));
+                    AskAction(towns);
                     break;
                 case "Vaccinate":
                     ActionVaccinate(ref towns, AskTownID(towns));
+                    AskAction(towns);
                     break;
                 case "Lock down":
                     ActionLockDown(ref towns, AskTownID(towns));
+                    AskAction(towns);
                     break;
                 case "Spread":
                     ActionSpread(ref towns);
+                    AskAction(towns);
                     break;
                 case "Exit":
                     return;
@@ -127,8 +131,6 @@ namespace StonemanFinals
                     AskAction(towns);
                     break;
             }
-
-            AskAction(towns);
         }
         static void BeginSimulation(Town[] towns)
         {
@@ -140,26 +142,22 @@ namespace StonemanFinals
             {
                 if (ID == contacts[i])
                 {
-                    Console.WriteLine("hey2");
                     Console.WriteLine("Invalid ID.");
                     return false;
                 }
             }
             if (ID < 0)
             {
-                Console.WriteLine("hey1");
                 Console.WriteLine("Invalid ID.");
                 return false;
             }
             else if (ID >= count)
             {
-                Console.WriteLine("hey3");
                 Console.WriteLine("Invalid ID.");
                 return false;
             }
             else if (ID == currentID)
             {
-                Console.WriteLine("hey4");
                 Console.WriteLine("Invalid ID.");
                 return false;
             }
